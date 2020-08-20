@@ -5,32 +5,31 @@
         <script src="https://js.stripe.com/v3/"></script>
     </head>
     <body>
-        <button id="basic-plan-button"
-        style=" 
-            cursor: pointer;
-            background-color: #cccccc00;
-            color: #000000;
-            border:0;
-            border-radius:7px;
-            min-width: 115px;
-            min-height: 33px;
-            font-size:14px;
-            font-weight: 500;
-            font-family: sequel,sans-serif;
-            letter-spacing: 0.1em;
-            pointer-events: auto;
-            box-sizing: border-box;
-            border: 3px solid #dec328;
-        "
-            onmouseover="this.style.border='3px solid #dec328bf'"
-            onmouseout="this.style.border='3px solid #dec328'"
+        <button id="business-plan-button"
+            style=" 
+                    cursor: pointer;
+                    background-color: #dec328;
+                    color: #000000;
+                    border:0;
+                    border-radius:7px;
+                    min-width: 115px;
+                    min-height: 33px;
+                    font-size:14px;
+                    font-weight: 500;
+                    font-family: sequel,sans-serif;
+                    letter-spacing: 0.1em;
+                    pointer-events: auto;
+                    box-sizing: border-box;
+                "
+            onmouseover="this.style.backgroundColor='#dec328bf'"
+            onmouseout="this.style.backgroundColor='#dec328'"
         >
             Get Started
         </button>
     </body>
     <script>
         const apiKey = 'pk_live_7yUppoIXt1GCoobHidFc2GDl00y82oTeGx'
-        const basicPlan = 'price_1H52qGI2T7GIMjpHsVglT30X'
+        const businessPlan = 'price_1H52rgI2T7GIMjpHHNlISgmL'
         var stripe = Stripe(apiKey);
 
         var createCheckoutSession = function(priceId) {
@@ -49,8 +48,8 @@
             }).catch(err => console.log(err));
         };
 
-        document.getElementById("basic-plan-button").addEventListener("click", function(e){
-            createCheckoutSession(basicPlan).then(function(data){
+        document.getElementById("business-plan-button").addEventListener("click", function(e){
+            createCheckoutSession(businessPlan).then(function(data){
                 stripe.redirectToCheckout({
                     sessionId: data.sessionId
                 })

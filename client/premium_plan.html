@@ -5,7 +5,7 @@
         <script src="https://js.stripe.com/v3/"></script>
     </head>
     <body>
-        <button id="basic-plan-button"
+        <button id="premium-plan-button"
         style=" 
             cursor: pointer;
             background-color: #cccccc00;
@@ -30,7 +30,7 @@
     </body>
     <script>
         const apiKey = 'pk_live_7yUppoIXt1GCoobHidFc2GDl00y82oTeGx'
-        const basicPlan = 'price_1H52qGI2T7GIMjpHsVglT30X'
+        const premiumPlan = 'price_1H52rEI2T7GIMjpHhnZOgZdP'
         var stripe = Stripe(apiKey);
 
         var createCheckoutSession = function(priceId) {
@@ -49,8 +49,8 @@
             }).catch(err => console.log(err));
         };
 
-        document.getElementById("basic-plan-button").addEventListener("click", function(e){
-            createCheckoutSession(basicPlan).then(function(data){
+        document.getElementById("premium-plan-button").addEventListener("click", function(e){
+            createCheckoutSession(premiumPlan).then(function(data){
                 stripe.redirectToCheckout({
                     sessionId: data.sessionId
                 })

@@ -3,3 +3,5 @@
 /node_modules
 
 .env
+
+/Users/spencerlee/express-stripe-app/client/test.html
