@@ -5,7 +5,7 @@ const express = require("express"),
          path = require("path"),
          {SERVER_PORT, STATIC_DIR, STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY} = process.env //importing env values
          
-
+const sc = require('./stripeController')
 const app = express();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -78,3 +78,5 @@ app.get("/api/setup", (req, res) => {
     });
   });
 
+//stripe endpoints
+app.post('/api/create-session', sc.makeSession)
