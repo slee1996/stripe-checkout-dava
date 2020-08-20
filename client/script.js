@@ -9,6 +9,7 @@ var createCheckoutSession = function(priceId) {
         priceId: priceId
       })
     }).then(function(result) {
+        console.log(result)
       return result.json();
     });
 };
@@ -21,13 +22,14 @@ var handleResult = function(result) {
     }
   };
   
-  /* Get your Stripe publishable key to initialize Stripe.js */
-  fetch("/setup")
+/* Get your Stripe publishable key to initialize Stripe.js */
+fetch("/setup")
     .then(function(result) {
       return result.json();
     })
     .then(function(json) {
       var publishableKey = json.publishableKey;
+      console.log(publishableKey)
       var basicPriceId = json.basicPrice;
       var proPriceId = json.proPrice;
   
