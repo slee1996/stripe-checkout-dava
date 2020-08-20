@@ -32,13 +32,13 @@ app.get("/", (req, res) => {
 });
 
 // Fetch the Checkout Session to display the JSON result on the success page
-app.get("/checkout-session", async (req, res) => {
+app.get("/api/checkout-session", async (req, res) => {
     const { sessionId } = req.query;
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     res.send(session);
 });
 
-app.post("/create-checkout-session", async (req, res) => {
+app.post("/api/create-checkout-session", async (req, res) => {
     const basicPlan = 'price_1H5ZrIJjU6H0KLWFQbb42Czu'
     const domainURL = process.env.DOMAIN;
     const priceId = basicPlan;
@@ -70,7 +70,7 @@ app.post("/create-checkout-session", async (req, res) => {
   });
   
 
-app.get("/setup", (req, res) => {
+app.get("/api/setup", (req, res) => {
     res.send({
       publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
       basicPrice: process.env.BASIC_PRICE_ID,

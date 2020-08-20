@@ -12,7 +12,7 @@
         const basicPlan = 'price_1H5ZrIJjU6H0KLWFQbb42Czu'
     // Create a Checkout Session with the selected plan ID
         var createCheckoutSession = function(priceId) {
-            return fetch("/create-checkout-session", {
+            return fetch("/api/create-checkout-session", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"
@@ -36,7 +36,7 @@
           };
           
           /* Get your Stripe publishable key to initialize Stripe.js */
-          fetch("/setup")
+          fetch("/api/setup")
             .then(console.log("setup fetch firing"))
             .then(function(result) {
               return result.json();
