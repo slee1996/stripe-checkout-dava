@@ -21,7 +21,7 @@
                 priceId: priceId
               })
             }).then(function(result) {
-                const res = result.json()
+                const res = result.text()
                 console.log(res)
               return res;
             }).catch(err => console.log(err));
