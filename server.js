@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const express = require("express"),
          cors = require("cors"),
-         {resolve} = require("path"),
+         path = require("path"),
          {SERVER_PORT, STATIC_DIR, STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY} = process.env //importing env values
          
 
@@ -26,8 +26,7 @@ const port = SERVER_PORT
 app.listen(port, () => console.log(`Node server listening on port ${port}!`));
 
 app.get("/", (req, res) => {
-    const path = resolve(process.env.STATIC_DIR + "/index.html");
-    res.sendFile(path);
+    res.sendFile(path.join(__dirname+'/client/index.html'));
 });
 
 // Fetch the Checkout Session to display the JSON result on the success page
