@@ -17,11 +17,11 @@
               headers: {
                 "Content-Type": "application/json"
               },
-              body: JSON.stringify({
-                priceId: priceId
-              })
+              body: {
+                "priceId": priceId
+              }
             }).then(function(result) {
-                const res = result.text()
+                const res = result.json()
                 console.log(res)
               return res;
             }).catch(err => console.log(err));
