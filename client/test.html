@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://js.stripe.com/v3"></script>
+<script type="text/javascript">
+  function init () {
+    var stripe = Stripe('pk_live_7yUppoIXt1GCoobHidFc2GDl00y82oTeGx')
+      // when a message is received from the page code
+      window.onmessage = (event) => {
+        if (event.data) {
+          insertMessage(event.data);
+          stripe.redirectToCheckout({
+            // Make the id field from the Checkout Session creation API response
+            // available to this file, so you can provide it as argument here
+            // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+            sessionId: event.data
+          }).then(function (result) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
+          }).catch((error) => {
+            console.log(error)
+          });
+        }
+      }
+    }
+    // display received message
+    function insertMessage(msg) {
+      document.getElementById('demo').innerHTML = msg;
+      sendReturnMessage("Message from the HTML Component!");
+    }
+    // send message to the page code
+    function sendReturnMessage(msg) {
+      window.parent.postMessage(msg, "https://www.davamarketing.com/pricing");
+    }
+</script>
+
+</head>
+<body onload="init();">
+<p id="demo"></p>
+</body>
+</html>

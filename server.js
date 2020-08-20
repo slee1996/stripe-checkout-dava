@@ -39,8 +39,9 @@ app.get("/checkout-session", async (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
+    const basicPlan = 'price_1H5ZrIJjU6H0KLWFQbb42Czu'
     const domainURL = process.env.DOMAIN;
-    const { priceId } = req.body;
+    const priceId = basicPlan;
   
     // Create new Checkout Session for the order
     // Other optional params include:
