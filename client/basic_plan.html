@@ -34,6 +34,7 @@
           
           /* Get your Stripe publishable key to initialize Stripe.js */
           fetch("/setup")
+            .then(console.log("setup fetch firing"))
             .then(function(result) {
               return result.json();
             })
