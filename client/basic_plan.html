@@ -36,6 +36,7 @@
           fetch("/setup")
             .then(console.log("setup fetch firing"))
             .then(function(result) {
+                console.log(result.json())
               return result.json();
             })
             .then(function(json) {
