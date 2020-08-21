@@ -15,8 +15,8 @@ module.exports = {
               },
             ],
             // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
-            success_url: `https://www.google.com/`,
-            cancel_url: `https://www.google.com/`,
+            success_url: `https://davamarketing.com/order-confirmation`,
+            cancel_url: `https://davamarketing.com/pricing`,
             allow_promotion_codes: true,
         })
 
